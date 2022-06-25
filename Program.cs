@@ -24,6 +24,13 @@ namespace Linq_Review
             Console.WriteLine("________________Executions,Streaming________________");
             Execution_Streaming.ExecutionExample();
             Execution_Streaming.Stream_Or_Non_Example();
+            Console.WriteLine("________________Concatenation________________");
+            int[] a = { 1, 2, 3 };
+            int[] b = { 4, 5, 6 };
+            Concatenation.Concate(a, b);
+            Console.WriteLine("________________Filtering________________");
+            Filtering.Where(Enumerable.Range(1,10).ToArray(), x => x>4);
+            Filtering.OfType(Enumerable.Range(1,10).ToArray());
             Console.ReadLine();
         }
     }
@@ -99,4 +106,39 @@ namespace Linq_Review
             Console.WriteLine("");
         }
     }
+
+    public static class Concatenation
+    {
+        public static void Concate(int[] a, int[] b)
+        {
+            Console.WriteLine("Concate");
+            a.Concat(b).ToList().ForEach(item =>
+            {
+                Console.Write(item + " ");
+            });
+            Console.WriteLine("");
+        }
+    }
+    public static class Filtering
+    {
+        public static void Where(int[] nums, Func<int, bool> filterOption)
+        {
+            Console.WriteLine("Where");
+            nums.Where(filterOption).ToList().ForEach(item =>
+            {
+                Console.Write(item + " ");
+            });
+            Console.WriteLine("");
+        }
+        public static void OfType(int[] nums)
+        {
+            Console.WriteLine("OfType int");
+            nums.OfType<int>().ToList().ForEach(item =>
+            {
+                Console.Write(item + " ");
+            });
+            Console.WriteLine("");
+        }
+    }
+
 }
